@@ -1,0 +1,13 @@
+{
+  // Cloudflare Workers config: assets-only Worker serving the Astro build.
+  // `name` must match the Worker created in the dashboard (hitesh-goel-site).
+  // Workers Builds runs `npm run build` then `npx wrangler deploy`, which
+  // reads this file to upload dist/ as static assets — no server code.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hitesh-goel-site",
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}
