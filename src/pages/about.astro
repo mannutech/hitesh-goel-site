@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+---
+
+<BaseLayout
+  title="About"
+  description="Software engineer with 9+ years across distributed systems and Web3 (JPMorgan, Crypto.com, Gelato, Moralis), building production agentic-AI infrastructure and publishing real, measured experiments."
+>
+  <h1>About</h1>
+
+  <p>
+    I'm a software engineer with 9+ years across distributed systems and Web3:
+    JPMorgan, Crypto.com, Gelato, and currently Moralis, where I build
+    production agentic-AI infrastructure. That means a Grafana MCP server,
+    code-review agents that remember what they've seen before, an automated
+    reviewer that goes over a work session after it ends, and eval harnesses
+    for RAG systems. It's the boring plumbing that decides whether an "AI
+    feature" actually holds up once real traffic hits it.
+  </p>
+
+  <p>
+    Outside work I ship open-source Claude Code plugins, ContextSpin and
+    RecallCheck, and keep a running habit of publishing real, measured
+    experiments instead of tutorials or predictions. I'd rather post one number
+    I actually observed than ten opinions about where the field is going.
+  </p>
+
+  <h2>Background</h2>
+  <ul>
+    <li>9+ years, distributed systems &amp; Web3</li>
+    <li>Currently: Senior Software Engineer @ Moralis</li>
+    <li>Past: JPMorgan, Crypto.com, Gelato</li>
+    <li>
+      Ships: Claude Code plugins (ContextSpin, RecallCheck), production
+      MCP/agent tooling
+    </li>
+  </ul>
+
+  <p>
+    I'm open to a small number of consulting conversations with teams working
+    on similar problems: agentic tooling, evals, the parts of this that only
+    break in production. <a href={`mailto:${SITE.email}`}>Get in touch</a>.
+  </p>
+
+  <p>
+    I'm also collecting interest for a small, private group for people building
+    seriously with AI to share real experiments, no judgment unless you ask for
+    it. If that's you,
+    <a href={`mailto:${SITE.email}?subject=AI%20Learner%20Group`}
+      >email me one thing you've tried and measured</a
+    >, and what happened.
+  </p>
+
+  <p>
+    Find me elsewhere: <a href={SITE.social.github}>GitHub</a> ·
+    <a href={SITE.social.linkedin}>LinkedIn</a> ·
+    <a href={SITE.social.x}>X</a>
+  </p>
+</BaseLayout>

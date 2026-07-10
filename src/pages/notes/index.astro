@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const notes = (await getCollection('notes')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+---
+
+<BaseLayout
+  title="Field Notes"
+  description="Dated write-ups of real AI engineering experiments: what was tried, the actual measured number, and one honest conclusion."
+>
+  <h1>Field Notes</h1>
+  <p>
+    Real experiments, real numbers. Each note states the result up front, then
+    the story of how it was measured, and one honest conclusion. No tutorials,
+    no predictions.
+  </p>
+
+  <ul class="note-list">
+    {
+      notes.map((note) => (
+        <li>
+          <span class="note-date">{formatDate(note.data.pubDate)}</span>
+          <a href={`/notes/${note.id}`}>{note.data.title}</a>
+          <p>{note.data.description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>

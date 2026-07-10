@@ -1,0 +1,177 @@
+/* Minimal, mobile-first. System font stack, one accent color, no framework
+   (master plan Part 1, §12). */
+
+:root {
+  --accent: #0b6e6e;
+  --text: #1a1a1a;
+  --text-muted: #555;
+  --bg: #ffffff;
+  --border: #e4e4e4;
+  --max-width: 42rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #4cc9c9;
+    --text: #e8e8e8;
+    --text-muted: #a5a5a5;
+    --bg: #131313;
+    --border: #2e2e2e;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+header.site-header,
+main,
+footer.site-footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+header.site-header {
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+header.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  font-size: 0.95rem;
+}
+
+header.site-header nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+header.site-header nav a:hover,
+header.site-header nav a[aria-current='page'] {
+  color: var(--accent);
+}
+
+header.site-header nav a.site-name {
+  color: var(--text);
+  font-weight: 600;
+  margin-right: auto;
+}
+
+main {
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  margin: 2rem 0 0.75rem;
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin-top: 0.5rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+a {
+  color: var(--accent);
+}
+
+p {
+  margin: 0.9rem 0;
+}
+
+ul {
+  padding-left: 1.4rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  background: color-mix(in srgb, var(--border) 45%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+.byline {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: -0.35rem;
+}
+
+.note-list {
+  list-style: none;
+  padding: 0;
+}
+
+.note-list li {
+  margin: 1.5rem 0;
+}
+
+.note-list .note-date {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.project {
+  margin: 2.25rem 0;
+}
+
+.project .tags {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.project .links {
+  font-size: 0.95rem;
+}
+
+footer.site-footer {
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+  padding-bottom: 2.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+footer.site-footer a {
+  color: var(--text-muted);
+}
+
+footer.site-footer a:hover {
+  color: var(--accent);
+}
+
+dl.faq dt {
+  font-weight: 600;
+  margin-top: 1.75rem;
+}
+
+dl.faq dd {
+  margin: 0.4rem 0 0;
+}

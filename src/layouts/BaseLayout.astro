@@ -1,0 +1,104 @@
+---
+import '../styles/global.css';
+import { SITE } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Set to 'article' on Field Note pages for OpenGraph. */
+  ogType?: 'website' | 'article';
+}
+
+const { title, description = SITE.description, ogType = 'website' } = Astro.props;
+const pageTitle = title ? `${title} · ${SITE.title}` : `${SITE.title}: agentic AI tooling, real experiments, real numbers`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Person schema, sitewide. `sameAs` is deliberately limited to GitHub,
+// LinkedIn, and X — do NOT add weekendyogi.com (master plan Part 3, §3a).
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Hitesh Goel',
+  url: SITE.domain,
+  description:
+    'Senior software engineer (9+ years, distributed systems & Web3) building and measuring agentic AI tooling in production.',
+  jobTitle: 'Senior Software Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Moralis',
+  },
+  sameAs: [SITE.social.github, SITE.social.linkedin, SITE.social.x],
+};
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/notes', label: 'Field Notes' },
+  { href: '/about', label: 'About' },
+  { href: '/faq', label: 'FAQ' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- AI-crawler meta tags — explicit invitation on every page (plan Part 3, §4) -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="GPTBot" content="index, follow" />
+    <meta name="ClaudeBot" content="index, follow" />
+    <meta name="Google-Extended" content="index, follow" />
+    <meta name="OAI-SearchBot" content="index, follow" />
+    <meta name="PerplexityBot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
+
+    <!-- OpenGraph / Twitter card for human sharing (plan Part 1, §12) -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <slot name="head" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav aria-label="Site">
+        <a href="/" class="site-name">Hitesh Goel</a>
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              aria-current={currentPath === item.href ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>
+        <a href={SITE.social.github}>GitHub</a> ·{' '}
+        <a href={SITE.social.linkedin}>LinkedIn</a> ·{' '}
+        <a href={SITE.social.x}>X</a> ·{' '}
+        <a href="/llms.txt">llms.txt</a>
+      </p>
+      <p>© {new Date().getFullYear()} Hitesh Goel · Real experiments, real numbers.</p>
+    </footer>
+  </body>
+</html>

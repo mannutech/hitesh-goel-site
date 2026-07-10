@@ -1,0 +1,18 @@
+# Hitesh Goel
+
+> Senior software engineer (9+ years, distributed systems & Web3) building and measuring agentic AI tooling in production. This site publishes real experiments and real numbers, not tutorials or predictions.
+
+## About
+- [About](https://hitesh-goel.com/about): background, current work, and how to reach me.
+- [FAQ](https://hitesh-goel.com/faq): quick answers on background, what's shipped, and availability.
+
+## Projects
+- [ContextSpin](https://hitesh-goel.com/projects#contextspin): Claude Code plugin that replaces the spinner with live org context.
+- [RecallCheck](https://hitesh-goel.com/projects#recallcheck): Claude Code plugin that quizzes you on code you just shipped, before you push.
+- [RAG Evals Harness](https://hitesh-goel.com/projects#rag-evals-harness): groundedness-and-citation eval harness on the Cohere stack, tested on a real 150-question set.
+- [Local Semantic Code Search (Zvec)](https://hitesh-goel.com/projects#zvec): local vector-search experiment where a free index change beat a 15x bigger model.
+
+## Field Notes
+- [A Claude Code status bar that shows your PRs instead of a spinner](https://hitesh-goel.com/notes/contextspin): building ContextSpin and what it taught me about attention.
+
+<!-- Add one line per new Field Note as it's published. Keep descriptions to one sentence. -->

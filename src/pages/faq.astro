@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// One array drives both the visible Q&A and the FAQPage JSON-LD, so the
+// structured data can never drift from what's on the page. FAQPage schema
+// lives on this page only — nowhere else (master plan Part 3, §3c).
+const faqs = [
+  {
+    q: 'What does Hitesh Goel work on?',
+    a: 'Distributed systems and Web3 infrastructure professionally, with a growing focus on building and evaluating agentic AI tooling: MCP servers, coding-agent evals, internal developer tools.',
+  },
+  {
+    q: "What's his background?",
+    a: '9+ years as a software engineer, including JPMorgan, Crypto.com, Gelato, and currently Moralis, where he builds production AI and agent infrastructure.',
+  },
+  {
+    q: 'What is this real experiments, real numbers series?',
+    a: 'An ongoing practice of publishing hands-on AI engineering experiments: what was tried, the actual measured result, and one honest conclusion, rather than tutorials or hot takes.',
+  },
+  {
+    q: 'What has he actually shipped?',
+    a: 'Open-source Claude Code plugins (ContextSpin, RecallCheck) and internal AI tooling in production at Moralis, including a Grafana MCP server, code-review agents, and an evals harness for RAG systems.',
+  },
+  {
+    q: 'Is he available for consulting or advisory work?',
+    a: 'Open to a small number of conversations with teams working on similar problems. See the contact link on the About page.',
+  },
+  {
+    q: 'Is there a community for people building this seriously?',
+    a: 'A small, private group for sharing real experiments, not hot takes, with no judgment unless asked for. Kept small on purpose: email one thing you\'ve tried and measured to be considered.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+---
+
+<BaseLayout
+  title="FAQ"
+  description="Quick answers about Hitesh Goel: background, what he's shipped, the real-experiments series, and availability for consulting conversations."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <h1>FAQ</h1>
+  <dl class="faq">
+    {
+      faqs.map(({ q, a }) => (
+        <>
+          <dt>{q}</dt>
+          <dd>{a}</dd>
+        </>
+      ))
+    }
+  </dl>
+  <p>
+    Something not covered here? <a href="/about">The About page</a> has the
+    full background and a contact link.
+  </p>
+</BaseLayout>

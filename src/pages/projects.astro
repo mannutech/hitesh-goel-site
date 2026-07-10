@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import projects from '../data/projects.json';
+
+// Curated, hand-updated list (src/data/projects.json) — deliberately NOT an
+// automated pull of all GitHub repos (master plan Part 1, §6).
+---
+
+<BaseLayout
+  title="Projects"
+  description="Real shipped work: ContextSpin and RecallCheck (Claude Code plugins), a RAG evals harness on the Cohere stack, and a local semantic code-search experiment."
+>
+  <h1>Projects</h1>
+  <p>
+    Curated list of real shipped work. Each of these exists, runs, and was
+    measured. The fuller story behind most of them lives in
+    <a href="/notes">Field Notes</a>.
+  </p>
+
+  {
+    projects.map((project) => (
+      <article class="project" id={project.id}>
+        <h2>{project.name}</h2>
+        <p class="tags">{project.tags.join(' · ')}</p>
+        <p>{project.description}</p>
+        <p class="links">
+          {project.repo && <a href={project.repo}>Repository</a>}
+          {project.repo && project.note && ' · '}
+          {project.note && <a href={project.note}>Field Note</a>}
+        </p>
+      </article>
+    ))
+  }
+</BaseLayout>

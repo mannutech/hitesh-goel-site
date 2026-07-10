@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { SITE } from '../../data/site';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map((note) => ({
+    params: { id: note.id },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+// BlogPosting schema per Field Note, fed from frontmatter (plan Part 3, §3b).
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: note.data.title,
+  datePublished: note.data.pubDate.toISOString().split('T')[0],
+  author: {
+    '@type': 'Person',
+    name: SITE.author,
+    url: `${SITE.domain}/about`,
+  },
+};
+---
+
+<BaseLayout title={note.data.title} description={note.data.description} ogType="article">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <article>
+    <h1>{note.data.title}</h1>
+    <p class="byline">
+      <a href="/about">{SITE.author}</a> ·
+      <time datetime={note.data.pubDate.toISOString().split('T')[0]}>
+        {formatDate(note.data.pubDate)}
+      </time>
+    </p>
+    <Content />
+  </article>
+
+  <p>
+    <a href="/notes">← All Field Notes</a> · <a href="/about">Who's writing this</a>
+  </p>
+</BaseLayout>
