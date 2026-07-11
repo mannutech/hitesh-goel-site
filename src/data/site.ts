@@ -6,10 +6,9 @@ export const SITE = {
   description:
     'Senior software engineer (9+ years, distributed systems & Web3) building and measuring agentic AI tooling in production. Real experiments, real numbers.',
   author: 'Hitesh Goel',
-  // PLACEHOLDER — Hitesh to confirm the real dedicated address before launch
-  // (master plan Part 1, §14.4). This one address receives both consulting
-  // conversations and AI Learner Group applications.
-  email: 'hello@hitesh-goel.com',
+  // This one address receives both consulting conversations and
+  // AI Learner Group applications (master plan Part 1, §9/§9a).
+  email: 'machomannu@gmail.com',
   social: {
     github: 'https://github.com/mannutech',
     linkedin: 'https://www.linkedin.com/in/hiteshgoelafs',
