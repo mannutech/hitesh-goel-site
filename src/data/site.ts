@@ -4,7 +4,7 @@ export const SITE = {
   title: 'Hitesh Goel',
   domain: 'https://hitesh-goel.com',
   description:
-    'Senior software engineer (9+ years, distributed systems & Web3) building and measuring agentic AI tooling in production. Real experiments, real numbers.',
+    'Senior backend engineer, 9+ years across Web3, DeFi, and fintech: blockchain data pipelines, exchange and wallet systems, L1/L2 infrastructure, and agentic AI tooling on top. Real experiments, real numbers.',
   author: 'Hitesh Goel',
   // This one address receives both consulting conversations and
   // AI Learner Group applications (master plan Part 1, §9/§9a).

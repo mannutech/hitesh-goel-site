@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { title, description = SITE.description, ogType = 'website' } = Astro.props;
-const pageTitle = title ? `${title} · ${SITE.title}` : `${SITE.title}: agentic AI tooling, real experiments, real numbers`;
+const pageTitle = title ? `${title} · ${SITE.title}` : `${SITE.title}: senior backend engineer (Web3, DeFi, fintech)`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Person schema, sitewide. `sameAs` is deliberately limited to GitHub,
@@ -21,8 +21,8 @@ const personSchema = {
   name: 'Hitesh Goel',
   url: SITE.domain,
   description:
-    'Senior software engineer (9+ years, distributed systems & Web3) building and measuring agentic AI tooling in production.',
-  jobTitle: 'Senior Software Engineer',
+    'Senior backend engineer with 9+ years across Web3, DeFi, and fintech: blockchain data pipelines, exchange and wallet systems, L1/L2 infrastructure, and agentic AI tooling on top.',
+  jobTitle: 'Senior Backend Engineer',
   worksFor: {
     '@type': 'Organization',
     name: 'Moralis',
