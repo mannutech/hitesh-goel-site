@@ -1,33 +1,71 @@
 [
   {
+    "id": "gelato-raas",
+    "category": "backend",
+    "name": "One-click L2 Rollup Deployment (Gelato)",
+    "description": "The flagship Rollup-as-a-Service pipeline: deploy a production L2 (OP Stack, Arbitrum Orbit, or Avalanche L1) from a single API call. Under the hood it auto-funds the deployer wallet via Gelato Web3 Functions, provisions a dedicated Kubernetes tenant, validates DNS, and wires up Prometheus/Grafana monitoring. It turned a manual, engineer-in-the-loop, multi-step process into self-service.",
+    "tags": ["L2", "OP Stack", "Kubernetes", "TypeScript", "Go"],
+    "link": { "label": "Gelato RaaS", "url": "https://www.gelato.network" },
+    "repo": null,
+    "note": null
+  },
+  {
+    "id": "moralis-analytics",
+    "category": "backend",
+    "name": "Multi-chain Wallet Analytics (Moralis)",
+    "description": "Production wallet and analytics infrastructure on ClickHouse, serving live API traffic. I built the v2 wallet-profitability engine (weighted-average cost, ROI, unrealized PnL, win-rate) on a CQRS architecture, added full Bitcoin support behind a multi-tier Redis cache with block-depth-aware TTLs (up to a 374x latency improvement), and unified wallet history across EVM, Bitcoin, and Solana. The interesting part is never the happy path; it's the caching, the reorg handling, and the query shapes that keep it fast under real load.",
+    "tags": ["ClickHouse", "CQRS", "Redis", "EVM/BTC/Solana", "TypeScript"],
+    "link": { "label": "Moralis", "url": "https://moralis.com" },
+    "repo": null,
+    "note": null
+  },
+  {
+    "id": "mtransform-rwa",
+    "category": "backend",
+    "name": "RWA ↔ Stablecoin Swap Platform (mTransform)",
+    "description": "A real-time, bidirectional swap platform for exchanging real-world-asset (RWA) tokens and stablecoins, with automatic on-chain settlement at live market prices. I built the pricing engine (crypto rates from CoinGecko, on-chain metal prices via Chainlink oracles, and MetalsAPI, with source prioritization), custody and settlement via Fireblocks with BullMQ-based idempotent, retryable processing, and compliance via Sumsub KYC and Elliptic wallet screening. Shipped across client RWA projects including Doma.",
+    "tags": ["Fireblocks", "Chainlink", "BullMQ", "RWA", "TypeScript"],
+    "link": null,
+    "repo": null,
+    "note": null
+  },
+  {
     "id": "contextspin",
+    "category": "ai",
     "name": "ContextSpin",
     "description": "A Claude Code plugin that replaces the spinner with live org context: open PRs, CI status, your next meeting, whatever you've got connected. It's a renderer, not a service. No daemon, no API keys of its own, it just reads from tools you already have. MIT licensed, one line to install. The whole idea started from noticing the spinner is the one thing on screen that's paid to tell you nothing.",
     "tags": ["Claude Code", "plugin", "TypeScript", "open source"],
+    "link": null,
     "repo": "https://github.com/mannutech/contextspin",
     "note": "/notes/contextspin"
   },
   {
     "id": "recallcheck",
+    "category": "ai",
     "name": "RecallCheck",
     "description": "A Claude Code plugin that quizzes you on the code you just wrote, right before you push. Questions are pulled from your real diff, weighted to the riskiest parts. It never blocks the push; it's a nudge, not a gate. The premise: shipping is cheap now, anyone can push a working feature in an afternoon, so the scarce part isn't the code. It's still being able to explain it an hour later.",
     "tags": ["Claude Code", "plugin", "open source"],
+    "link": null,
     "repo": "https://github.com/mannutech/recallcheck",
     "note": null
   },
   {
     "id": "rag-evals-harness",
+    "category": "ai",
     "name": "RAG Evals Harness",
     "description": "A groundedness-and-citation harness built on the Cohere stack, tested against a real 150-question set. It caught the agent quietly refusing questions it should have answered, the kind of failure that looks fine in a demo and only shows up when you measure it. It also settled hybrid-vs-single-mode search with a number instead of a hallway argument.",
     "tags": ["RAG", "evals", "Cohere", "Python"],
+    "link": null,
     "repo": "https://github.com/mannutech/grounded-rag-agent",
     "note": null
   },
   {
     "id": "zvec",
+    "category": "ai",
     "name": "Local Semantic Code Search (Zvec)",
     "description": "An experiment testing whether Claude could understand a ~5,000-file codebase using Zvec, Alibaba's open-source vector DB, running fully local. The obvious fix was a bigger model. I tried the cheap thing first: adding file paths to the index took retrieval from 6/25 to 16/25. That's a free change that beat a 15x bigger model, which only reached 20/25 while running 4x slower.",
     "tags": ["vector search", "embeddings", "local-first", "experiment"],
+    "link": null,
     "repo": null,
     "note": null
   }
